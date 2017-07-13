@@ -1,8 +1,24 @@
-#!/usr/bin/env python3
+def anagram(s1, s2):
+    s1 = s1.lower()
+    s2 = s2.lower()
+    s1 = s1.replace(" ", "")
+    s2 = s2.replace(" ", "")
 
-def anagram(str):
-	print(str)
+    if len(s1) != len(s2):
+        print("incorrect length")
+        return False
+
+    skip = []
+
+    for l in s1:
+        if l in skip:
+            continue
+        if s1.count(l) != s2.count(l):  # costly op
+            return False
+
+        skip.append(l)
+
+    return True
 
 
-anagram('abcd')
-
+print(anagram("I am Lord Voldemort", "Tom Marvolo Riddle"))
